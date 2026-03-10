@@ -1,7 +1,7 @@
 {
   "name": "CYBER GOAT BOT",
   "version": "2.1.2",
-  "description": "A simple Bot chat messenger using personal account. Made by ST | CYBER ULLASH",
+  "description": "A  Bot chat messenger using personal account. Made by indra | ABDUR RAFIU UTSHO ",
   "main": "Ullash.js",
   "engines": {
     "node": "18.x",
@@ -55,27 +55,27 @@
   "scripts": {
     "start": "node Ullash.js"
   },
-  "author": "ST | CYBER ULLASH",
+  "author": "Indra Otsutsuki",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cyber-ullash/CYBER-GOAT-BOT.git"
+    "url": "https://www.facebook.com/indra.otsutsuki.627332"
   },
   "keywords": [
     "facebook",
     "messenger",
     "bot",
     "chatbot",
-    "st-bot",
-    "sheikh-tamim",
+    "Bby",
+    "Bby",
     "bot",
     "facebook",
-    "ullashproject",
+    "Bby",
     "messenger",
     "javasvript",
-    "ullash",
-    "cyberullash",
-    "cyberRajib ",
+    "Indra",
+    "Indra",
+    "Indra ",
     "islamick chat bot",
     "cyberbot.top",
     "st bot",
@@ -86,10 +86,9 @@
     "fca bot"
   ],
   "bugs": {
-    "url": "https://github.com/cyber-ullash/CYBER-GOAT-BOT/issues"
+    "url": "https://www.facebook.com/indra.otsutsuki.627332"
   },
-  "homepage": "https://github.com/cyber-ullash/CYBER-GOAT-BOT#readme",
-  "devDependencies": {
+  "homepage": "https://www.facebook.com/indra.otsutsuki.627332": {
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-node": "^4.1.0",
