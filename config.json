@@ -30,15 +30,15 @@
   },
   "antiInbox": false,
   "language": "en",
-  "nickNameBot": "𝐂𝐘𝐁𝐄𝐑 𝐆𝐎𝐀𝐓 𝐁𝐎𝐓 ᵁᴸᴸᴬˢᴴ",
-  "prefix": "!",
+  "nickNameBot": "AI HOSHINO",
+  "prefix": "/",
   "usePrefix": {
     "enable": true,
     "adminUsePrefix": {
       "enable": true,
       "specificUids": [
-        "100082395531611",
-        "100015168369582"
+        "61576009718382",
+        "100093527672040"
       ]
     }
   },
@@ -46,7 +46,7 @@
     "enable": false,
     "ignoreCommand": [
       "100082395531611",
-      "100015168369582"
+      "100093527672040"
     ]
   },
   "adminBot": [
