@@ -3,13 +3,13 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "[ U L L A S H]"; 
+const doNotDelete = "[ I N D R A ]"; 
 
 module.exports = {
   config: {
     name: "help",
     version: "1.17",
-    author: "ULLASH",
+    author: "INDRA",
     countDown: 5,
     role: 0,
     shortDescription: {
@@ -34,7 +34,7 @@ module.exports = {
       const categories = {};
       let msg = "╭───────❁";
 
-      msg += `\n│𝘂 𝗹 𝗹 𝗮 𝘀 𝗵 ッ 𝗛𝗘𝗟𝗣 𝗟𝗜𝗦𝗧\n╰────────────❁`; 
+      msg += `\n╭─────✰\n│ ♥︎╣[❉ 𝗜𝗡𝗗𝗥𝗔 𝗢𝗧𝗦𝗨𝗧𝗦𝗨𝗞𝗜 ❉]╠♥︎\n╰────────────✰`;
 
       for (const [name, value] of commands) {
         if (value.config.role > 1 && role < value.config.role) continue;
@@ -62,10 +62,21 @@ module.exports = {
       const totalCommands = commands.size;
       msg += `\n\n╭─────✰[𝗘𝗡𝗝𝗢𝗬]\n│>𝗧𝗢𝗧𝗔𝗟 𝗖𝗠𝗗𝗦: [${totalCommands}].\n│𝗧𝗬𝗣𝗘𝖳:[ ${prefix}𝗛𝗘𝗟𝗣 𝗧𝗢\n│<𝗖𝗠𝗗> 𝗧𝗢 𝗟𝗘𝗔𝗥𝗡 𝗧𝗛𝗘 𝗨𝗦𝗔𝗚𝗘.]\n╰────────────✰`;
       msg += ``;
-      msg += `\n╭─────✰\n│ ♥︎╣[❉𝘂 𝗹 𝗹 𝗮 𝘀 𝗵 ッ❉]╠♥︎\n╰────────────✰`; 
+      msg += `\n╭─────✰\n│ ♥︎╣[❉ 𝗜𝗡𝗗𝗥𝗔 𝗢𝗧𝗦𝗨𝗧𝗦𝗨𝗞𝗜 ❉]╠♥︎\n╰────────────✰`;
 
- 				const helpListImages = [ "https://files.catbox.moe/utby7g.jpeg" ];
-
+ 				const helpListImages = [
+ "https://i.postimg.cc/D0QCSx9f/1764772502239.jpg",
+ "https://i.postimg.cc/htKGQhd7/Screenshot_20260206_140552.png",
+ "https://i.postimg.cc/bwLwx8xR/Screenshot_20260206_140528.png",
+ "https://i.postimg.cc/25KjtwXw/Screenshot_20251201_231142.png",
+ "https://i.postimg.cc/J7B09f8y/PSX_20260126_221850_2.jpg",
+ "https://i.postimg.cc/NFT0mHDL/1771259976264.jpg",
+ "https://i.postimg.cc/zDRv9sNb/1769594377847.jpg",
+ "https://i.postimg.cc/4xX3Hn94/1768484208950.jpg",
+ "https://i.postimg.cc/BnJvPtKP/1765957585286.jpg",
+ "https://i.postimg.cc/x8Vxjw48/1764772618489.jpg",
+ "https://i.postimg.cc/BQr6SMqB/Screenshot-20260310-165531-2.jpg"
+];
 
       const helpListImage = helpListImages[Math.floor(Math.random() * helpListImages.length)];
 
@@ -82,8 +93,7 @@ module.exports = {
       } else {
         const configCommand = command.config;
         const roleText = roleTextToString(configCommand.role);
-        const author = configCommand.author || "Unknown";
-
+        const author = "INDRA OTSUTSUKI";
         const longDescription = configCommand.longDescription ? configCommand.longDescription.en || "No description" : "No description";
 
         const guideBody = configCommand.guide?.en || "No guide available.";
