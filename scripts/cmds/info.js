@@ -6,9 +6,9 @@ module.exports = {
 	config: {
 		name: "info",
 		aliases: ["admin"],
-		author: "ULLASH ",
+		author: "INDRA",
 		role: 0,
-		shortDescription: "info and my owner the cmd",
+		shortDescription: "Owner information",
 		longDescription: "",
 		category: "INFO",
 		guide: "{pn}"
@@ -16,48 +16,66 @@ module.exports = {
 
 	onStart: async function ({ api, event }) {
 		try {
-			const ULLASHInfo = {
-				name: '𝐮 𝐥 𝐥 𝐚 𝐬 𝐡 ッ',
-				gender: '𝐌𝐚𝐥𝐞',
-				age: '21',
-				Tiktok: 'ullash01',
-				Relationship: '𝐢𝐧 𝐜𝐨𝐦𝐩𝐥𝐢𝐜𝐚𝐭𝐞𝐝',
-				religion: '𝐈𝐬𝐥𝐚𝐦',
-				facebook: 'https://www.facebook.com/profile.php?id=100086680386976'
+
+			const INDRAInfo = {
+				name: "𝐈𝐍𝐃𝐑𝐀 𝐎𝐓𝐒𝐔𝐓𝐒𝐔𝐊𝐈",
+				gender: "Male",
+				religion: "Islam",
+				facebook1: "https://www.facebook.com/profile.php?id=61576009718382",
+				facebook2: "https://www.facebook.com/indra.otsutsuki.627332"
 			};
 
-			const ULLASH = 'https://files.catbox.moe/do2kb3.jpeg';
-			const tmpFolderPath = path.join(__dirname, 'tmp');
+			const images = [
+				"https://i.postimg.cc/t45YQzG6/Screenshot_20260206_140552_2.jpg",
+				"https://i.postimg.cc/R0ZqMnvW/Screenshot_20260304_201124_2.jpg",
+				"https://i.postimg.cc/QdbHGqZp/Screenshot_20260206_140528_2.jpg",
+				"https://i.postimg.cc/hGthS7K8/Screenshot_20260307_135049_4.jpg",
+				"https://i.postimg.cc/s2g1VZ3h/Screenshot_20260307_135828_2.jpg",
+				"https://i.postimg.cc/XvYXVyn2/Screenshot_20260310_165247_2.jpg",
+				"https://i.postimg.cc/fbRkw0Mv/Screenshot_20260310_235647_2.jpg",
+				"https://i.postimg.cc/HLkjp7T6/Screenshot_20260310_165531_2.jpg",
+				"https://i.postimg.cc/9fQzWqc4/Screenshot_20251201_231142_2.jpg",
+				"https://i.postimg.cc/pLxp664N/Screenshot_20251113_205025_2.jpg"
+			];
+
+			const randomImage = images[Math.floor(Math.random() * images.length)];
+
+			const tmpFolderPath = path.join(__dirname, "tmp");
 
 			if (!fs.existsSync(tmpFolderPath)) {
 				fs.mkdirSync(tmpFolderPath);
 			}
 
-			const imgResponse = await axios.get(ULLASH, { responseType: 'arraybuffer' });
-			const imgPath = path.join(tmpFolderPath, 'owner_img.jpeg');
+			const imgResponse = await axios.get(randomImage, { responseType: "arraybuffer" });
+			const imgPath = path.join(tmpFolderPath, "owner_img.jpg");
 
-			fs.writeFileSync(imgPath, Buffer.from(imgResponse.data, 'binary'));
+			fs.writeFileSync(imgPath, Buffer.from(imgResponse.data, "binary"));
 
-			const response = `╭─────❁\n│  𝗢𝗪𝗡𝗘𝗥 𝗜𝗡𝗙𝗢  \n│
-│𝐍𝐚𝐦𝐞: ${ULLASHInfo.name}
-│𝐆𝐞𝐧𝐝𝐞𝐫 : ${ULLASHInfo.gender}
-│𝐑𝐞𝐥𝐚𝐭𝐢𝐨𝐧𝐬𝐡𝐢𝐩 :${ULLASHInfo.Relationship}
-│𝐀𝐠𝐞 :${ULLASHInfo.age}
-│𝐑𝐞𝐥𝐢𝐠𝐢𝐨𝐧: ${ULLASHInfo.religion}
-│𝐓𝐢𝐤𝐭𝐨𝐤 : ${ULLASHInfo.Tiktok}
-│𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤: ${ULLASHInfo.facebook}\n╰────────────❁`;
+			const message = `
+╭─────❁
+│  𝗢𝗪𝗡𝗘𝗥 𝗜𝗡𝗙𝗢
+│
+│ 𝗡𝗮𝗺𝗲: ${INDRAInfo.name}
+│ 𝗚𝗲𝗻𝗱𝗲𝗿: ${INDRAInfo.gender}
+│ 𝗥𝗲𝗹𝗶𝗴𝗶𝗼𝗻: ${INDRAInfo.religion}
+│
+│ 𝗙𝗮𝗰𝗲𝗯𝗼𝗼𝗸 1:
+│ ${INDRAInfo.facebook1}
+│
+│ 𝗙𝗮𝗰𝗲𝗯𝗼𝗼𝗸 2:
+│ ${INDRAInfo.facebook2}
+╰────────────❁`;
 
 			await api.sendMessage({
-				body: response,
+				body: message,
 				attachment: fs.createReadStream(imgPath)
 			}, event.threadID, event.messageID);
 
 			fs.unlinkSync(imgPath);
 
-			api.setMessageReaction('🐔', event.messageID, (err) => {}, true);
 		} catch (error) {
-			console.error('Error in ULLASHinfo command:', error);
-			return api.sendMessage('An error occurred while processing the command.', event.threadID);
+			console.error(error);
+			api.sendMessage("Error loading owner info.", event.threadID);
 		}
 	}
 };
