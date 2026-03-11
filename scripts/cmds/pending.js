@@ -17,8 +17,8 @@ module.exports = {
   langs: {
     en: {
       invaildNumber: "%1 is not a valid number",
-      cancelSuccess: "Refused %1 thread!",
-      approveSuccess: "Approved successfully %1 threads!",
+      cancelSuccess: "Refused %1 thread(s)! (by ${global.GoatBot.ownerName})",
+      approveSuccess: "Approved successfully %1 thread(s)! (by ${global.GoatBot.ownerName})",
       cantGetPendingList: "Can't get the pending list!",
       returnListPending: "📋 Pending groups: %1\n\n%2",
       returnListClean: "✅ There are no groups waiting for approval"
@@ -43,8 +43,7 @@ module.exports = {
       }
 
       return api.sendMessage(getLang("cancelSuccess", count), threadID, messageID);
-    }
-
+    } 
     else {
       const index = body.split(/\s+/);
 
@@ -69,6 +68,7 @@ module.exports = {
 ┃ Approval Mode: ${threadInfo.approvalMode ? "On" : "Off"}
 ┃ Emoji: ${threadInfo.emoji || "None"}
 ┃ Joined: ${time}
+┃ By: ${global.GoatBot.ownerName}
 ┃
 ╚════════════════════╝`,
         targetThread
@@ -82,13 +82,11 @@ module.exports = {
   },
 
   onStart: async function ({ api, event, getLang, commandName }) {
-
     const { threadID, messageID } = event;
 
     let msg = "", index = 1;
 
     try {
-
       const spam = await api.getThreadList(100, null, ["OTHER"]) || [];
       const pending = await api.getThreadList(100, null, ["PENDING"]) || [];
 
@@ -98,24 +96,17 @@ module.exports = {
         msg += `${index++}/ ${item.name} (${item.threadID})\n`;
 
       if (list.length != 0) {
-
         return api.sendMessage(getLang("returnListPending", list.length, msg), threadID, (err, info) => {
-
           global.GoatBot.onReply.set(info.messageID, {
             commandName,
             messageID: info.messageID,
             author: event.senderID,
             pending: list
           });
-
         }, messageID);
-
-      }
-
+      } 
       else return api.sendMessage(getLang("returnListClean"), threadID, messageID);
-
-    }
-
+    } 
     catch (e) {
       return api.sendMessage(getLang("cantGetPendingList"), threadID, messageID);
     }
