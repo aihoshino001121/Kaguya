@@ -5,7 +5,7 @@ const path = require('path');
 module.exports = {
 config: {
   name: "owner",
-  author: "INDRA(UTSHO)",
+  author: "INDRA",
   role: 0,
   shortDescription: "Bot owner information",
   longDescription: "",
