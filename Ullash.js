@@ -1,3 +1,5 @@
+global.GoatBot = global.GoatBot || {};
+global.GoatBot.ownerName = "INDRA OTSUTSUKI";
 const { spawn } = require("child_process");
 const log = require("./logger/log.js");
 
