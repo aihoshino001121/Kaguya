@@ -26,7 +26,7 @@ const ownerInfo = {
 };
 
 // New video from Streamable
-const videoURL = 'https://cdn.streamable.com/video/4qcivo.mp4';
+const videoURL = 'https://files.catbox.moe/dldlxk.mp4';
 
 const tmpFolderPath = path.join(__dirname, 'tmp');
 
