@@ -5,60 +5,68 @@ const path = require('path');
 module.exports = {
 config: {
   name: "owner",
-  aurthor:"Tokodori",// Convert By Goatbot Tokodori 
-   role: 0,
-  shortDescription: " ",
+  author: "INDRA(UTSHO)",
+  role: 0,
+  shortDescription: "Bot owner information",
   longDescription: "",
   category: "admin",
   guide: "{pn}"
 },
 
-  onStart: async function ({ api, event }) {
-  try {
-    const ownerInfo = {
-      name: 'MAHBUB ULLASH',
-      gender: 'Male',
-      age: '21+',
-      height: 'Unknown',
-      facebookLink: 'https://www.facebook.com/CYBER.ULLASH',
-      nick: 'ULLASH\n\n𝐅𝐨𝐫 𝐦𝐨𝐫𝐞 𝐢𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧 𝐯𝐢𝐬𝐢𝐭: https://mahbub-ullash.cyberbot.top'
-    };
+onStart: async function ({ api, event }) {
+try {
 
-    const bold = 'https://files.catbox.moe/1dwo7j.mp4'; // Replace with your Google Drive videoid link https://drive.google.com/uc?export=download&id=here put your video id
+const ownerInfo = {
+  name: 'INDRA OTSUTSUKI',
+  gender: 'Male',
+  age: 'Unknown',
+  height: 'Unknown',
+  facebookLink: 'https://www.facebook.com/indra.otsutsuki.627332',
+  nick: 'INDRA'
+};
 
-    const tmpFolderPath = path.join(__dirname, 'tmp');
+// New video from Streamable
+const videoURL = 'https://cdn.streamable.com/video/4qcivo.mp4';
 
-    if (!fs.existsSync(tmpFolderPath)) {
-      fs.mkdirSync(tmpFolderPath);
-    }
+const tmpFolderPath = path.join(__dirname, 'tmp');
 
-    const videoResponse = await axios.get(bold, { responseType: 'arraybuffer' });
-    const videoPath = path.join(tmpFolderPath, 'owner_video.mp4');
+if (!fs.existsSync(tmpFolderPath)) {
+  fs.mkdirSync(tmpFolderPath);
+}
 
-    fs.writeFileSync(videoPath, Buffer.from(videoResponse.data, 'binary'));
+const videoResponse = await axios.get(videoURL, { responseType: 'arraybuffer' });
+const videoPath = path.join(tmpFolderPath, 'owner_video.mp4');
 
-    const response = `
-Owner Information:🧾
-Name: ${ownerInfo.name}
-Gender: ${ownerInfo.gender}
-Age: ${ownerInfo.age}
-Height: ${ownerInfo.height}
-Facebook: ${ownerInfo.facebookLink}
-Nick: ${ownerInfo.nick}
+fs.writeFileSync(videoPath, Buffer.from(videoResponse.data, 'binary'));
+
+const response = `
+╭─────❁
+│  OWNER INFORMATION
+│
+│ Name: ${ownerInfo.name}
+│ Gender: ${ownerInfo.gender}
+│ Age: ${ownerInfo.age}
+│ Height: ${ownerInfo.height}
+│
+│ Facebook:
+│ ${ownerInfo.facebookLink}
+│
+│ Nickname: ${ownerInfo.nick}
+╰────────────❁
 `;
 
+await api.sendMessage({
+  body: response,
+  attachment: fs.createReadStream(videoPath)
+}, event.threadID, event.messageID);
 
-    await api.sendMessage({
-      body: response,
-      attachment: fs.createReadStream(videoPath)
-    }, event.threadID, event.messageID);
+fs.unlinkSync(videoPath);
 
-    if (event.body.toLowerCase().includes('ownerinfo')) {
-      api.setMessageReaction('🚀', event.messageID, (err) => {}, true);
-    }
-  } catch (error) {
-    console.error('Error in ownerinfo command:', error);
-    return api.sendMessage('An error occurred while processing the command.', event.threadID);
-  }
-},
+api.setMessageReaction('🔥', event.messageID, () => {}, true);
+
+} catch (error) {
+console.error('Error in owner command:', error);
+return api.sendMessage('An error occurred while processing the command.', event.threadID);
+}
+}
 };
